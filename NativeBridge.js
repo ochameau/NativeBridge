@@ -49,6 +49,9 @@ var NativeBridge = {
     
     var iframe = document.createElement("IFRAME");
     iframe.setAttribute("src", "js-frame:" + functionName + ":" + callbackId+ ":" + encodeURIComponent(JSON.stringify(args)));
+    // For some reason we need to set a non-empty size for the iOS6 simulator...
+    iframe.setAttribute("height", "1px");
+    iframe.setAttribute("width", "1px");
     document.documentElement.appendChild(iframe);
     iframe.parentNode.removeChild(iframe);
     iframe = null;
